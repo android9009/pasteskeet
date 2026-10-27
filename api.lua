@@ -955,3 +955,35 @@ function ui.set_style_color(backend, name, color) end
 ---@param opacity? number 0..1; nil removes this script's override.
 function ui.set_blur_opacity(surface, opacity) end
 function ui.reset_theme() end
+
+---@class MenuTabStyle
+---@field title? string UTF-8 literal caption, 1..96 bytes, no ## or line breaks.
+---@field icon? string UTF-8 icon/glyph text, 1..16 bytes; default ">".
+---@field icon_texture? integer Owned render texture handle; 0 restores glyph icon.
+---@field text_color? Color Whole caption tint.
+---@field text_colors? Color[] Per Unicode codepoint; at most 96 entries; omitted letters use text_color.
+---@field icon_color? Color Glyph/image tint.
+---@field background? Color Inactive row background.
+---@field active_background? Color Selected row background.
+---@param id string Script-local stable id, 1..80 UTF-8 bytes.
+---@param title string Literal UTF-8 caption, 1..96 bytes.
+---@param options? MenuTabStyle
+---NEXT GEN shows only the first 4 tabs globally, by creation order; extra tabs stay hidden without stopping scripts.
+---CLASSIC has no custom main-menu tabs. Keep primary settings on the script page; tabs are optional presentation.
+---@return string id Registration limits: 8 per script, 32 globally; removed on unload/failure.
+function ui.create_tab(id, title, options) end
+---@param id string Owned tab id.
+---@param options? MenuTabStyle Partial update; nil resets style/icon and preserves id/title/groups.
+function ui.set_tab_style(id, options) end
+---@param id string Owned tab id; controls remain on the script page.
+function ui.remove_tab(id) end
+---@param tab string Owned tab id.
+---@param id string Stable group id, 1..80 bytes.
+---@param title string Literal caption, 1..96 bytes.
+---@param column? integer 1 left (default), 2 right. Up to 16 groups per tab.
+---@return string id
+function ui.create_tab_group(tab, id, title, column) end
+---@param control string Owned ui.create control.
+---@param tab? string Owned tab id; adds a NEXT GEN view while retaining script-page settings in both styles; nil removes the tab view.
+---@param group? string Owned group in that tab; nil uses an automatic group.
+function ui.attach_tab(control, tab, group) end

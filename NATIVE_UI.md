@@ -1,5 +1,16 @@
 # Native XUI / ImGui windows and menu themes
 
+Main-menu sidebar tabs, custom icons, animated labels and per-letter SKEET
+foreground/shadow colors: [MENU_TABS.ru.md](MENU_TABS.ru.md),
+[RGB Lab example](examples/rgb_menu_tab.lua).
+
+Only NEXT GEN supports custom main-menu tabs, with at most four visible entries
+globally in creation order. Further registrations remain hidden; their scripts
+continue running. Removing an earlier tab reveals the next registration.
+CLASSIC does not support adding main-menu sections/tabs. Keep primary settings
+on the script's own settings page and use a sidebar tab as optional presentation.
+Controls attached to tabs remain available on the script page in both styles.
+
 NEXT GEN is the default. Its Style combo is below Subscription in the top-right
 information popup; CLASSIC exposes Style in Misc. Style, Old Name and Old Color
 are independent persisted config fields. CLASSIC retains its 900x700 script
@@ -153,6 +164,13 @@ ui.reset_theme() releases this script's overrides. Unload, reload and script
 failure release them automatically. For overlapping script overrides, the last
 script to update its patch wins; release reveals the previous script's patch or
 the base Old Color palette. Store user preferences through storage/ui controls.
+
+The menu backend also exposes logo_text, logo_shadow and their numbered roles
+logo_text_1..logo_text_9 / logo_shadow_1..logo_shadow_9. These address the NEXT GEN
+header, including Old Name. SKEET uses letters 1..5, NEVERLOSE uses 1..9.
+Foreground and the existing offset blue shadow are independent. Set a role to
+nil to release it. Updates in paint can animate colors; no extra blur pass is
+created. CLASSIC's baked background artwork is not recolored by these roles.
 
 Example: [three simultaneous windows](native/mixed_menu.lua).
 Validation is offline; build and check graphics, focus/input and timing in game.

@@ -432,5 +432,18 @@
   "Unequip skin": "卸下皮肤",
   "Version:": "版本：",
   "Weapons": "武器",
-  "World": "世界"
+  "World": "世界",
+  "Friendly": "队友",
+  "Loading...": "加载中...",
+  "Local": "本地",
+  "Invisible": "不可见",
+  "Visuals preview": "视觉预览",
+  "Preview": "预览",
+  "Hold and drag: rotate model": "按住并拖动：旋转模型",
+  "Automatic correction": "自动修正",
+  "HUD": "HUD",
+  "Inherit default scale": "继承默认比例",
+  "Miscellaneous": "杂项",
+  "Outline": "描边",
+  "Outline Color": "描边颜色"
 }
